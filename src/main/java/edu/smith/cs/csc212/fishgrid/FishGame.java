@@ -1,5 +1,6 @@
 package edu.smith.cs.csc212.fishgrid;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -58,12 +59,17 @@ public class FishGame {
 		home = world.insertFishHome();
 		
 		// TODO(lab) Generate some more rocks!
+		//Rock rock2 = new Rock(world);
+		//rock2.draw(null);
+		
 		// TODO(lab) Make 5 into a constant, so it's easier to find & change.
 		for (int i=0; i<5; i++) {
 			world.insertRockRandomly();
 		}
 		
 		// TODO(lab) Make the snail!
+		//Snail snail = new Snail(world);
+		//snail.draw(g);
 		
 		// Make the player out of the 0th fish color.
 		player = new Fish(0, world);
@@ -122,6 +128,7 @@ public class FishGame {
 				// Remove from world.
 				// TODO(lab): add to found instead! (So we see objectsFollow work!)
 				justFound.remove();
+				missing.remove(justFound);
 				
 				// Increase score when you find a fish!
 				score += 10;
