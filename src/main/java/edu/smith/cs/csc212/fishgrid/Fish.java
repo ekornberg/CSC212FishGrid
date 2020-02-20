@@ -22,6 +22,7 @@ public class Fish extends WorldObject {
 			Color.cyan,
 			Color.pink,
 			Color.magenta,
+			Color.orange
 			
 			// TODO: (FishGrid) Maybe make a special fish that is more points?
 	};

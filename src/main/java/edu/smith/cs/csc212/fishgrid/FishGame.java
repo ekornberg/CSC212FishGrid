@@ -8,6 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import me.jjfoley.gfx.IntPoint;
 
+// https://moodle.smith.edu/pluginfile.php/801626/mod_resource/content/0/06_Java_Maps.pdf
+
 /**
  * This class manages our model of gameplay: missing and found fish, etc.
  * @author jfoley
@@ -46,11 +48,8 @@ public class FishGame {
 	 */
 	int score;
 	
-	// Rocks to delete
-	List<Rock> delete;	
-	
-	// Rocks that are gone
-	List<Rock> gone;
+	// Rocks that exist
+	List<Rock> existRocks;	
 	
 	// Number of rocks
 	final int NUM_ROCKS = 5;
@@ -68,13 +67,16 @@ public class FishGame {
 		
 		missing = new ArrayList<Fish>();
 		found = new ArrayList<Fish>();
+		existRocks = new ArrayList<Rock>();
 		
 		// Add a home!
 		home = world.insertFishHome();
 		
-		// Insert rocks
+		// Insert rocks randomly into list "existRocks"
 		for (int i=0; i<NUM_ROCKS; i++) {
-			world.insertRockRandomly();
+			Rock rocks = world.insertRockRandomly();
+			existRocks.add(rocks);
+			System.out.println(existRocks);
 		}
 		
 		// Insert snail		
@@ -199,23 +201,19 @@ public class FishGame {
 	}	
 	
 	public void click(int x, int y) {
-		// TODO(FishGrid) use this print to debug your World.canSwim changes!
-		System.out.println("Clicked on: "+x+","+y+ " world.canSwim(player,...)="+world.canSwim(player, x, y));
+		// List of things at this point
 		List<WorldObject> atPoint = world.find(x, y);	
-		System.out.println("atPoint");
-		System.out.println(atPoint);
-		delete = new ArrayList<Rock>();
-		gone = new ArrayList<Rock>();
-
-		// TODO(FishGrid) allow the user to click and remove rocks.
+		
+		// Run for loop when i < how many things at this point
 		for (int i=0; i<atPoint.size(); i++) {	
-			WorldObject clickRock = atPoint.get(i);
-			System.out.println("clickRock");
-			System.out.println(clickRock);
-			if (delete.contains(clickRock)) {
-				gone.add((Rock) clickRock);		
+			// Clicked point
+			WorldObject clicked = atPoint.get(i);
+			// If clicked point in list of existing rocks,
+			if (existRocks.contains(clicked)) {
+				// Remove rock from this list and from world
+				this.existRocks.remove((Rock) clicked);
+				this.world.remove((Rock) clicked);
 			}
-
 		}
 	}
 }
