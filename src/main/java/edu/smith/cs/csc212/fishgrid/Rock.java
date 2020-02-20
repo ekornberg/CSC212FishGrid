@@ -50,7 +50,9 @@ public class Rock extends WorldObject {
 
 	@Override
 	public void step() {
-		// Rocks don't actually *do* anything.		
+		// Rocks don't actually *do* anything.
+		this.moveDown(); 	
+
 	}
 
 }

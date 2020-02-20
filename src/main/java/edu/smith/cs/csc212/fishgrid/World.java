@@ -233,17 +233,59 @@ public class World {
 	 * @param followers a set of objects to follow the leader.
 	 */
 	public static void objectsFollow(WorldObject target, List<? extends WorldObject> followers) {
-		// TODO(FishGrid) Comment this method!
+
 		// Q1. What is recentPositions?
+		/*
+		 * recentPositions makes target, which is the
+		 * coordinate of the player fish's current location, 
+		 * into a list of the player fish's most recent coordinates,
+		 * and when the player fish moves, the new location is
+		 * added to the front of the list
+		 */
+		
 		// Q2. What is followers?
+		/*
+		 * followers are the most recent previous location coordinates
+		 * of the fish that follow the player fish and
+		 * when there are multiple fish following the player fish,
+		 * the coordinates for the fish first in line behind the player fish
+		 * are listed first
+		 */
+
 		// Q3. What is target?
+		// target is the coordinate set of the player fish's current location
+		
 		// Q4. Why is past = putWhere[i+1]? Why not putWhere[i]?
+		 /*With putWhere[i], after the player fish catches its first fish, 
+		  * when it starts to move, the player fish disappears and
+		  * the first caught fish becomes the player fish. 
+		  * By adding 1 to putWhere, we are able to keep the player fish intact.
+		 */
+			
+		
+		// putWhere list of recent positions
 		List<IntPoint> putWhere = new ArrayList<>(target.recentPositions);
+		
+		// For loop for adding follower fish
 		for (int i=0; i < followers.size() && i+1 < putWhere.size(); i++) {
 			// Q5. What is the deal with the two conditions in this for-loop?
 			// Conditions are in the "while" part of this loop.
 			
+			/* The for loop initializes i to 0, where i is the
+			 * number of the follower fish. (i is 0 when 1st follower
+			 * fish added, 1 when 2nd follower fish added, etc.)
+			 * 
+			 * The for loop runs if both the 2 following conditions are met:
+			 * (1) if i, the number of follower fish, is less than
+			 * followers.size(), the number of follower fish
+			 * (2) when i + 1, the number of fish + 1, is less than
+			 * putWhere.size(), or the number of follower fish + 1. 
+			*/
+
+			// Coordinate points for last in line follower fish location
 			IntPoint past = putWhere.get(i+1);
+			
+			// Location coordinates for all follower fish
 			followers.get(i).setPosition(past.x, past.y);
 		}
 	}
