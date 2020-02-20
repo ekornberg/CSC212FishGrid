@@ -1,5 +1,6 @@
 package edu.smith.cs.csc212.fishgrid;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +53,10 @@ public class FishGame {
 	List<Rock> existRocks;	
 	
 	// Number of rocks
-	final int NUM_ROCKS = 5;
+	final int NUM_ROCKS = 15;
 	
-	// Rocks
-	Rock rock;
+	// Fish home
+	List<Fish> homeList;
 	
 	/**
 	 * Create a FishGame of a particular size.
@@ -111,7 +112,11 @@ public class FishGame {
 	 */
 	public boolean gameOver() {
 		// TODO(FishGrid) We want to bring the fish home before we win!
+		
+		
+		
 		return missing.isEmpty();
+		
 	}
 
 	/**
@@ -153,8 +158,10 @@ public class FishGame {
 				found.add((Fish) thing);
 				
 				// Increase score when you find a fish!
-				//if (fish)
+				
 				score += 10;
+
+				
 			}
 		}
 		

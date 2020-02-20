@@ -15,17 +15,22 @@ public class Fish extends WorldObject {
 	/**
 	 * A fish is only special because of its color now!
 	 */
+	
 	static Color[] COLORS = {
 			Color.red,
-			Color.green,
-			Color.yellow,
-			Color.cyan,
+			Color.orange,
+			Color.orange,
+			Color.orange,
+			Color.orange,
+			Color.orange,
 			Color.pink,
-			Color.magenta,
-			Color.orange
+			Color.pink,
+			Color.pink,
+			Color.pink,
+			Color.pink
+	};
 			
 			// TODO: (FishGrid) Maybe make a special fish that is more points?
-	};
 	/**
 	 * This is an index into the {@link #COLORS} array.
 	 */
@@ -52,6 +57,9 @@ public class Fish extends WorldObject {
 		super(world);
 		this.color = color;
 	}
+	
+
+	
 	
 	/**
 	 * What actual color is this fish? We store an index, so get it here.
