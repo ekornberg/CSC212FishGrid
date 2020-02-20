@@ -24,13 +24,12 @@ public class Fish extends WorldObject {
 			Color.orange,
 			Color.orange,
 			Color.pink,
-			Color.pink,
-			Color.pink,
-			Color.pink,
-			Color.pink
+
 	};
 			
 			// TODO: (FishGrid) Maybe make a special fish that is more points?
+	
+	
 	/**
 	 * This is an index into the {@link #COLORS} array.
 	 */
@@ -39,14 +38,12 @@ public class Fish extends WorldObject {
 	 * Whether or not this is the player;
 	 */
 	boolean player = false;
-	
 	/**
 	 * Called only on the Fish that is the player!
 	 */
 	public void markAsPlayer() {
 		this.player = true;
 	}
-
 
 	/**
 	 * A Fish knows what World it belongs to, because all WorldObjects do.
@@ -57,9 +54,6 @@ public class Fish extends WorldObject {
 		super(world);
 		this.color = color;
 	}
-	
-
-	
 	
 	/**
 	 * What actual color is this fish? We store an index, so get it here.
