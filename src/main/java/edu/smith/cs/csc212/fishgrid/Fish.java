@@ -17,18 +17,19 @@ public class Fish extends WorldObject {
 	 */
 	
 	static Color[] COLORS = {
-			Color.red,
+			Color.red, // Player fish
+			// 10 follower fish (9 regular/1 special)
 			Color.orange,
 			Color.orange,
 			Color.orange,
 			Color.orange,
 			Color.orange,
-			Color.pink,
-
+			Color.orange,
+			Color.orange,
+			Color.orange,
+			Color.orange,
+			Color.pink, // Special fish
 	};
-			
-			// TODO: (FishGrid) Maybe make a special fish that is more points?
-	
 	
 	/**
 	 * This is an index into the {@link #COLORS} array.

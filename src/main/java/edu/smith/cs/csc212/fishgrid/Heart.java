@@ -28,7 +28,7 @@ public class Heart extends WorldObject {
 
 	@Override
 	public void step() {
-
+		
 	}
 	
 	/**

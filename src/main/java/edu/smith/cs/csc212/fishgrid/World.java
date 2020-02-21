@@ -158,6 +158,16 @@ public class World {
 	}
 	
 	/**
+	 * Insert hearts into the world at random.
+	 * @return hearts.
+	 */
+	public Heart insertHeartRandomly() {
+		Heart h = new Heart(this);
+		insertRandomly(h);
+		return h;
+	}
+	
+	/**
 	 * Insert a new Fish into the world at random of a specific color.
 	 * @param color - the color of the fish.
 	 * @return the new fish itself.
